@@ -32,6 +32,8 @@ client.on('connect', () => {
     // Inform controllers we are connected to mqtt (but not yet to the hardware).
     publishConnectionStatus();
     client.subscribe(mqttConf.topic + 'set/light/+');
+    client.subscribe(mqttConf.topic + 'lightsout'); // Everything off
+    client.subscribe(mqttConf.topic + 'lightson'); // Everything on (why??)
 
 });
 
@@ -68,7 +70,7 @@ client.on('message', (topic, message) => {
             }
 
             // If we get to here, we will have a 'setOptions' object with to desired values.
-            console.log('Setting light \'%s\' with %s', JSON.stringify(setOptions));
+            console.log('Setting light \'%s\' with %s',name, JSON.stringify(setOptions));
             clearTimeout(hueTimer); // Stop the update timer.
             hue.changeLights(setOptions, function(err, resp) {
                 if (err) {
@@ -83,6 +85,7 @@ client.on('message', (topic, message) => {
         }
 
     } else if (topic == mqttConf.topic + 'lightsout') {
+        console.log('Executing lights out');
         clearTimeout(hueTimer);
         hue.changeGroup(0, {
             on: false
@@ -94,6 +97,7 @@ client.on('message', (topic, message) => {
             publishHueStatus();
         });
     } else if (topic == mqttConf.topic + 'lightson') {
+        console.log('Executing lights on');
         clearTimeout(hueTimer);
         hue.changeGroup(0, {
             on: true

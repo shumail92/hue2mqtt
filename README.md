@@ -20,13 +20,15 @@ This bridge uses the `hue/connected` topic to send retained connection messages.
 
 ## Status messages
 
-The status of each thermostat will be published to `hue/status/light/light_name` as a JSON object containing the following fields. The light_name is all lowercase and spaces are replaced with `_`.
+The status of each light will be published to `hue/status/light/light_name` as a JSON object containing the following fields. The light_name is all lowercase and spaces are replaced with `_`.
 
 - `val` current brightness (or `0` if the light is off or unreachable).
 - `hue_state` JSON object retrieved from hue bridge.
 - `ts` timestamp of last update.
 
 Each status message is retained, so if you subscribe after a status message, you will always get the last status.
+
+By default the light statusses get pulled every 15 seconds. But you can override that by setting `hue.updateInterval` in your [local config](#config) look at the [default config](config/default.json).
 
 ## Setting the lights
 
@@ -43,6 +45,12 @@ You can control each light by send one of the options below to `hue/set/light/li
   - `transitiontime` number (multiplied with 100 ms) to transition from the current state to the new state.
 
 Currently setting only the brightness does not work. This library uses [hue-util](https://www.npmjs.com/package/hue-util) for talking to the hue system. This library doesn't support setting the brightness (yet). I made an [issue](https://github.com/octoblu/node-hue-util/issues/3) about it, if this issue gets fixed, it should automatically work here.
+
+## Extra commands
+
+We also implemented some handy commands:
+-  `hue/lightsout` switch off all lights.
+-  `hue/lightson` switch on all the lights. (Please explain to me why you would use this?)
 
 # Config
 
@@ -73,6 +81,6 @@ The first time you run this application, it tries to connect to your hue system 
 
 Try to start the application by running `npm start` or directly by `node bridge.js`, and the topics should appear on your mqtt server.
 
-## Running in the background
+# Use [PM2](http://pm2.keymetrics.io) to run in background
 
 If everything works as expected, you should make the app run in the background automatically. Personally I use PM2 for this. And they have a great [guide for this](http://pm2.keymetrics.io/docs/usage/quick-start/).
