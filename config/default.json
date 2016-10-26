@@ -1,0 +1,14 @@
+{
+  "mqtt": {
+    "host":null,
+    "user":null,
+    "password":null,
+    "secure":false,
+    "topic":"hue/"
+  },
+  "hue": {
+    "ip":null,
+    "username":null,
+    "updateInterval":15
+  }
+}
