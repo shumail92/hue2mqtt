@@ -1,6 +1,6 @@
 {
   "name": "hue2mqtt",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Connect your philips hue lights to mqtt with this bridge. Inspired on https://github.com/mqtt-smarthome",
   "main": "bridge.js",
   "scripts": {
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/svrooij/hue2mqtt#readme",
   "dependencies": {
     "config": "^1.21.0",
-    "hue-util": "^2.0.2",
+    "hue-util": "svrooij/node-hue-util#c0c116b794e2de00bb629cdf95bf5eb5bdd17a88",
     "lodash": "^4.16.4",
     "mqtt": "^2.0.1"
   }

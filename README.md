@@ -44,8 +44,6 @@ You can control each light by send one of the options below to `hue/set/light/li
   - `effect` `colorloop` (rainbow mode), `none` (back to normal)
   - `transitiontime` number (multiplied with 100 ms) to transition from the current state to the new state.
 
-Currently setting only the brightness does not work. This library uses [hue-util](https://www.npmjs.com/package/hue-util) for talking to the hue system. This library doesn't support setting the brightness (yet). I made an [issue](https://github.com/octoblu/node-hue-util/issues/3) about it, if this issue gets fixed, it should automatically work here.
-
 ## Extra commands
 
 We also implemented some handy commands:
