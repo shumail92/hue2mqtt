@@ -27,7 +27,7 @@
   "homepage": "https://github.com/svrooij/hue2mqtt#readme",
   "dependencies": {
     "config": "^1.21.0",
-    "hue-util": "svrooij/node-hue-util#c0c116b794e2de00bb629cdf95bf5eb5bdd17a88",
+    "hue-util": "git://github.com/shumail92/larissa-dependencies.git#hue-util",
     "lodash": "^4.16.4",
     "mqtt": "^2.0.1"
   }
