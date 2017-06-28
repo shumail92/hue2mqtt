@@ -6,6 +6,8 @@ This node.js application is a bridge between the [Philips Hue](http://meethue.co
 
 It's intended as a building block in heterogenous smart home environments where an MQTT message broker is used as the centralized message bus. See [MQTT Smarthome on Github](https://github.com/mqtt-smarthome/mqtt-smarthome) for a rationale and architectural overview.
 
+*Updated for Larissa*
+
 # Topics
 
 Every message starts with a prefix (see [config](#config)) that defaults to `hue`. So if you change this all the topics change.
